@@ -1,0 +1,127 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 50px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+    padding: 15px 20px;
+}
+
+#resultCard.legitimate {
+    border-left: 5px solid #28a745;
+}
+
+#resultCard.fraud {
+    border-left: 5px solid #dc3545;
+}
+
+#resultHeader.legitimate {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+#resultHeader.fraud {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    overflow-x: auto;
+}
+
+.img-fluid {
+    max-height: 300px;
+    width: auto;
+}
+
+.nav-tabs .nav-link {
+    color: #495057;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: bold;
+    background-color: rgba(13, 110, 253, 0.1);
+    border-bottom: 3px solid #0d6efd;
+}
+
+.form-control, .form-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.btn-primary {
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #0d6efd;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+#pcaFeaturesContainer input {
+    margin-bottom: 5px;
+}
+
+.alert {
+    border-radius: 5px;
+}
+
+.badge {
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+}
+
+.tab-content {
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+    
+    .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+    
+    [class*="col-"] {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
