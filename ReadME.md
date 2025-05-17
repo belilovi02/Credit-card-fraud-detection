@@ -1,4 +1,4 @@
-# Detekcija Prijevara Kreditnim Karticama - Mašinsko Učenje
+# Detekcija Prevara Kreditnim Karticama - Mašinsko Učenje
 
 ## Opis projekta
 
