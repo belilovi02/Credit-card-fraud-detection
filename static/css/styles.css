@@ -110,6 +110,27 @@ pre {
     border-top: none;
 }
 
+#testDataBtn {
+    transition: all 0.3s ease;
+}
+
+#testDataBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#transactionForm.legitimate {
+    border-left: 3px solid #28a745;
+}
+
+#transactionForm.fraud {
+    border-left: 3px solid #dc3545;
+}
+
+#transactionForm.borderline {
+    border-left: 3px solid #ffc107;
+}
+
 @media (max-width: 768px) {
     .card-body {
         padding: 15px;

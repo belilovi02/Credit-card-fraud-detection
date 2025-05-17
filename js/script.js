@@ -7,10 +7,66 @@ document.addEventListener('DOMContentLoaded', function() {
         col.innerHTML = `
             <div class="mb-2">
                 <label for="v${i}" class="form-label small">V${i}</label>
-                <input type="number" class="form-control form-control-sm" id="v${i}" step="0.000001" value="${(Math.random() * 2 - 1).toFixed(6)}">
+                <input type="number" class="form-control form-control-sm" id="v${i}" step="0.000001">
             </div>
         `;
         pcaContainer.appendChild(col);
+    }
+
+    // Generisanje testnih podataka
+    document.getElementById('testDataBtn').addEventListener('click', function() {
+        generateTestData();
+        
+        // Vizuelna povratna informacija
+        this.textContent = 'Novi testni podaci generisani!';
+        this.classList.remove('btn-outline-secondary');
+        this.classList.add('btn-success');
+        
+        setTimeout(() => {
+            this.textContent = 'Generiši testne podatke';
+            this.classList.remove('btn-success');
+            this.classList.add('btn-outline-secondary');
+        }, 1500);
+    });
+
+    // Funkcija za generisanje testnih podataka
+    function generateTestData() {
+        const scenarios = [
+            {type: 'legitimate', amountRange: [10, 500], valueRange: [-1, 1]},
+            {type: 'fraud', amountRange: [500, 2000], valueRange: [-5, 5]},
+            {type: 'borderline', amountRange: [100, 300], valueRange: [-2, 2]}
+        ];
+        
+        const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+        const form = document.getElementById('transactionForm');
+        
+        // Resetujemo klasu forme
+        form.className = '';
+        setTimeout(() => {
+            form.classList.add(scenario.type);
+        }, 10);
+        
+        // Generisanje iznosa
+        const amount = (Math.random() * 
+                      (scenario.amountRange[1] - scenario.amountRange[0]) + 
+                      scenario.amountRange[0]).toFixed(2);
+        document.getElementById('amount').value = amount;
+        
+        // Generisanje PCA karakteristika
+        for (let i = 1; i <= 28; i++) {
+            const val = Math.random() > 0.8 ? 
+                  (Math.random() * 
+                   (scenario.valueRange[1] - scenario.valueRange[0]) + 
+                   scenario.valueRange[0]) :
+                  (Math.random() * 2 - 1);
+            
+            document.getElementById(`v${i}`).value = val.toFixed(6);
+        }
+        
+        // Nasumično odabran model
+        const models = ['random_forest', 'xgboost', 'logistic_regression'];
+        const randomModel = models[Math.floor(Math.random() * models.length)];
+        document.getElementById('modelType').value = randomModel;
     }
 
     // Učitaj metrike modela
@@ -37,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = {
             amount: amount,
             model_type: modelType,
-            time: Date.now() / 1000,  // Trenutno vrijeme u sekundama
+            time: Date.now() / 1000,
             ...pcaFeatures
         };
 
@@ -186,4 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
 weighted avg      ${metrics.Accuracy.toFixed(4)}    ${metrics.Accuracy.toFixed(4)}    ${metrics.Accuracy.toFixed(4)}     56962
         `;
     }
+
+    generateTestData();
 });
